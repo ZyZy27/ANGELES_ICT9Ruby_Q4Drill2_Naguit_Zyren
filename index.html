@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 Drill 2</title>
+
+<style>
+    body{
+        background-image: url('bg2.JPG');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: brown;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .div1{
+        background-color: rgba(220, 144, 2, 0.606);
+        border-radius: 5%;
+        height: 550px;
+        padding: 10px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="div1" style="margin: 50px auto ; width: 400px; text-align: center;">
+
+        <h2 style="text-align: center; ">Heat Index Indicator</h2>
+
+        
+        <div>
+            <img src="table.png" width="350px" height="auto" >
+        </div>
+    
+        <p style="color: rgb(57, 38, 3);">HEAT INDEX (how hot it feels), 
+            is determined by combining the air temperature
+            (temp) with 33% of the humidity value, then subtracting 4 to adjust the
+            result.</p>
+
+        <div style="background-color: black; padding: 5px; color: orange; width: 350px; margin: 0px auto; text-align: center; padding-bottom: 10px; ">
+            <p>Input Current Temperature:</p>
+
+            <input type="number" id="temp_input">
+
+            <p>Input Current Humidity:</p>
+
+            <input type="number" id="hum_input">
+        </div>
+<br>
+
+        <button onclick="show_temp()" style="background-color: orange; border-radius: 5px; padding: 10px 20px; font-size: 16px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">HEAT INDEX</button>
+    </div>
+
+
+
+
+
+    <script>
+        function show_temp(){
+            var temp = parseInt(document.getElementById('temp_input').value);
+            let hum = parseInt(document.getElementById('hum_input').value);
+            var heat_index = temp + (0.33 * hum) - 4;
+
+            var status;
+
+            switch(true){
+                case (heat_index <= 27): 
+                    status = "Comfortable/Cool"
+                    break;
+                case (heat_index >= 28 && heat_index <= 32):
+                    status = "Warm"
+                    break;
+                case (heat_index >= 33 && heat_index <= 37):
+                    status = "Hot"
+                    break;
+                case (heat_index >= 38 && heat_index <= 41):
+                    status = "Very Hot/ Caution"
+                    break;
+                case (heat_index >= 42):
+                    status = "Extreme Heat / Danger"
+                    break;
+                default: 
+                    status = "Invalid Heat Index";
+            }
+
+            window.alert("Status: " + status + "\nHeat Index: " + heat_index)
+        }
+    </script>
+</body>
+</html>
